@@ -6,28 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveBtn = document.getElementById("saveNameBtn");
   const nameSpan = document.getElementById("userName");
 
-  // Cek apakah sudah pernah disimpan di localStorage
-  const savedName = localStorage.getItem("userName");
+  // Popup SELALU muncul saat halaman dibuka
+  popup.classList.remove("hidden");
 
-  if (savedName) {
-    nameSpan.textContent = savedName;
-  } else {
-    popup.classList.remove("hidden"); // tampilkan popup
-  }
-
-  // Saat tombol simpan diklik
   saveBtn.addEventListener("click", () => {
     const name = input.value.trim();
+
     if (name) {
-      localStorage.setItem("userName", name);
       nameSpan.textContent = name;
-      popup.classList.add("hidden");
+      popup.classList.add("hidden"); // sembunyikan popup
+      input.value = ""; // kosongkan input
     } else {
       input.classList.add("ring-2", "ring-red-500");
       input.placeholder = "Nama tidak boleh kosong!";
     }
   });
 });
+
 
 // contact.js
 
